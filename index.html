@@ -1,135 +1,218 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>えいごでGO！🌍</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" 
-        rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カスタムスーツ学習ページ</title>
   <style>
+    /* Base Styles */
     body {
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+    img.banner-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px 0;
     }
 
-    .header {
-      background: linear-gradient(120deg, #ff6b6b, #feca57);
-      color: white;
-      padding: 100px 0;
+    /* Hero Banner */
+    .hero {
+      position: relative;
       text-align: center;
+      background-color: #1A1A2E;
+      color: #F5F5F5;
+      padding: 80px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #D4AF37;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .hero .cta {
+      display: inline-block;
+      background: linear-gradient(90deg, #FF6A00, #FFB400);
+      color: #1A1A2E;
+      text-decoration: none;
+      padding: 20px 40px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .hero .cta:hover {
+      background: linear-gradient(90deg, #FFB400, #FF6A00);
+      color: #F5F5F5;
+      transform: translateY(-5px);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Problems Section */
+    .problems {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .problems h2 {
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .problems ul {
+      list-style: none;
+      padding: 0;
+    }
+    .problems li {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      padding-left: 30px;
       position: relative;
     }
-
-    .header h1 {
-      font-size: 3rem;
-    }
-
-    .header::after {
-      content: "🔥";
-      font-size: 80px;
+    .problems li::before {
+      content: '❌';
       position: absolute;
-      right: 20px;
-      top: 20px;
+      left: 0;
+      top: 0;
+      font-size: 1.5rem;
+      color: #E74C3C;
     }
 
-    .feature-icon {
-      font-size: 40px;
-      margin-bottom: 15px;
-      animation: float 2s ease-in-out infinite;
+    /* Solutions Section */
+    .solutions {
+      background-color: #fff;
+      padding: 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-top: 40px;
     }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    .solutions h2 {
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #333;
     }
-
-    .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      transition: 0.3s ease;
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
     }
-
-    .footer {
-      background-color: #222;
-      color: white;
-      padding: 40px 0;
+    .feature {
+      font-size: 1.2rem;
+      position: relative;
+      padding-left: 35px;
+      color: #333;
     }
-
-    .footer a {
-      color: #feca57;
+    .feature::before {
+      content: '✅';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #4CAF50;
+      font-size: 1.4rem;
+    }
+    .solutions .cta {
+      display: inline-block;
+      background: linear-gradient(90deg, #4CAF50, #28B463);
+      color: #F5F5F5;
       text-decoration: none;
+      padding: 18px 35px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      text-align: center;
+      margin-top: 30px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .solutions .cta:hover {
+      background: linear-gradient(90deg, #28B463, #4CAF50);
+      transform: translateY(-5px);
     }
 
-    .footer a:hover {
-      text-decoration: underline;
+    /* Footer */
+    footer {
+      background-color: #1A1A2E;
+      color: #F5F5F5;
+      text-align: center;
+      padding: 25px 0;
+      margin-top: 60px;
+    }
+    footer a {
+      color: #D4AF37;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #F5F5F5;
     }
   </style>
 </head>
 <body>
-
-  <section class="header">
-    <div class="container">
-      <h1>🌟 えいごでGO！</h1>
-      <p class="lead">たのしく、かんたんに、えいごをマスター！</p>
-      <a href="#contact" class="btn btn-dark btn-lg mt-4">📩 おといあわせ</a>
+  <!-- Banner 1: Hero -->
+  <header class="hero">
+    <img src="suit image.png" alt="ヒーローバナー" class="banner-image">
+    <div class="hero-content">
+     
     </div>
+  </header>
+
+  <!-- Banner 2: Problems -->
+  <section class="section problems">
+    <h2>こんなお悩みありませんか？</h2>
+    <ul>
+      <li>サイズが合わないスーツばかり</li>
+      <li>肩や袖の長さがしっくりこない</li>
+      <li>生地の質感や見た目に満足できない</li>
+      <li>スーツを着ても自信が持てない</li>
+    </ul>
+    <img src="https://media.istockphoto.com/id/1385308351/photo/asian-businessman-who-fails-and-regrets.jpg?s=612x612&w=0&k=20&c=1XAgXaLDzFuSiOVG3BlryIwiDF0AwTMaI20x3th-FXc=" alt="悩みセクション画像" class="banner-image">
   </section>
 
-  <section class="py-5 bg-light">
-    <div class="container text-center">
-      <h2 class="mb-5">📚 人気のレッスン</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card p-4">
-            <div class="feature-icon">🗣️</div>
-            <h5>はなす力アップ</h5>
-            <p>かんたんなフレーズから、じっさいに使える会話をまなぼう！</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-4">
-            <div class="feature-icon">🎧</div>
-            <h5>リスニング力アップ</h5>
-            <p>ネイティブの音声で、ほんとうの英語をきいてみよう。</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-4">
-            <div class="feature-icon">🎮</div>
-            <h5>ゲームでまなぶ</h5>
-            <p>クイズやゲームで、たのしく英単語をおぼえよう！</p>
-          </div>
-        </div>
-      </div>
+  <!-- Banner 3: Solutions -->
+  <section class="section solutions" id="solutions">
+    <h2>すべての悩みを解決する、私たちのオーダースーツ</h2>
+    <div class="features">
+      <div class="feature">体型にぴったり合ったフィット感</div>
+      <div class="feature">創業1935年の日本製の信頼</div>
+      <div class="feature">3,000種類以上の生地から選べる</div>
+      <div class="feature">初めての方限定22,000円割引キャンペーン</div>
     </div>
+    <img src="https://media.istockphoto.com/id/1344768688/photo/asian-businessmen-using-tablets.jpg?s=612x612&w=0&k=20&c=ijQGqt6HNMyDoVLoFd4gCykzQmkyE3gEClXH4x8UJro=" alt="解決策セクション画像" class="banner-image">
+    <a href="https://px.a8.net/svt/ejp?a8mat=4534K2+4VMW8I+57PI+609HT" class="cta">まずは無料相談からはじめましょう！</a>
   </section>
 
-  <section class="py-5">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <img src="https://img.freepik.com/free-vector/online-english-language-learning_23-2148651516.jpg" 
-               alt="Learning Image" 
-               class="img-fluid rounded shadow-sm">
-        </div>
-        <div class="col-md-6">
-          <h3>🎯 あなたの目標にあわせて学べる！</h3>
-          <p>たんご、ぶんぽう、はなし方など、自分のレベルにあわせてえらべるから安心。まいにちすこしずつ続けよう！</p>
-          <a href="#contact" class="btn btn-warning mt-3">スタートする 🚀</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact" class="footer text-center">
-    <div class="container">
-      <h4>📬 お問い合わせ</h4>
-      <p>なにか聞きたいことがあれば、お気軽にどうぞ！</p>
-      <a href="mailto:sushilatmg2002@gmail.com">メールで連絡する</a>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p>オーダースーツ学習ページ © 2025</p>
+    <a href="https://px.a8.net/svt/ejp?a8mat=4534K2+4VMW8I+57PI+609HT">無料相談はこちら</a>
   </footer>
-
-  <script 
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js">
-  </script>
 </body>
 </html>
